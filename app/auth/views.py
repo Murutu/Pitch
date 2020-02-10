@@ -8,4 +8,6 @@ def register():
         db.session.add(user)
         db.session.commit()
         
-        mail_message
+        mail_message("Welcome to pitch","email/welcome",user.email,user=user)
+        
+ return render_template('auth/register.html',registration_form = form)        
