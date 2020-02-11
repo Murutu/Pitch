@@ -26,4 +26,8 @@ class Pitch(db.Model):
         return pitches
     
     def __repr__(self):
-        return f'Pitch {self.description}'      
+        return f'Pitch {self.description}'
+    
+
+class Comment(db.Model):
+              
