@@ -3,7 +3,7 @@ from app.models import User
 from flask_script import Manager,Server
 
 # Creating app instance
-app = creaet_app('development')
+app = create_app('development')
 
 manager = Manager(app)
 manager.add_command('server',Server)
