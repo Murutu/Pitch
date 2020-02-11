@@ -11,3 +11,19 @@ class User(db.Model):
     
     def __repr__(self):
         return f'User {self.username}'
+    
+    
+class Pitch(db.Model):
+    __tablename__ = 'pitches'
+    id = db.Column(db.Integer, primary_key = True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
+    description = db.Column(db.String(), index = True)
+    title = db.Column(db.String())
+    
+    @classmethod
+    def get_pitches(cls, id):
+        pitches = Pitch.query.order_by(pitch_id).desc().all()
+        return pitches
+    
+    def __repr__(self):
+        return f'Pitch {self.description}'      
