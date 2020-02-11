@@ -1,6 +1,8 @@
 from flask import Flask
-from flask_mail import Mail
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail
+
 
 
 bootstrap =Bootstrap()
@@ -12,4 +14,6 @@ def create_app(config_name):
     # Initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
+    
+    return app    
 
