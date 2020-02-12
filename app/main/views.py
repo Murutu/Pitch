@@ -1,4 +1,8 @@
 from flask import render_template
+from .import main
+from flask_login import login_required, current_user
+ 
+
 
 
 # Views
