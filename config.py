@@ -23,6 +23,21 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 
-class    
+class TestConfig(Config):
+    '''
+    Test configuration child class
+    Args:
+        Comfig: The parent configuration class with General configuration settings
+    '''
+    SECRET_KET = 'one'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://peter:ozil@localhost/laca'
+    DEBUG = True
+    ENV = 'development'
+    
+config_options = {
+    'development':DevConfig,
+    'production':ProdConfig,
+    'test':TestConfig
+}          
     
     
