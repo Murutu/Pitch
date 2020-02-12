@@ -16,9 +16,10 @@ class User(db.Model):
 class Pitch(db.Model):
     __tablename__ = 'pitches'
     id = db.Column(db.Integer, primary_key = True)
-    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     description = db.Column(db.String(), index = True)
     title = db.Column(db.String())
+    comment = db.relationship('Comment', backref = 'comment', lazy = 'dynamic')
     
     @classmethod
     def get_pitches(cls, id):
@@ -29,5 +30,14 @@ class Pitch(db.Model):
         return f'Pitch {self.description}'
     
 
-class Comment(db.Model):
+# class Comment(db.Model):
+#     __tablename__='comments'
+    
+#     id = db.Column(db.Integer,primary_key=True)
+#     pitch_id = db.Column(db.Integer, db.Foreign('pitches.id'))
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     description = db.Column(db.Text)
+    
+#     def __repr__(self):
+#         return f"Comment : id: {self.id} comment: {self.description}"
               
