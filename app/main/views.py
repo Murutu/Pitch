@@ -16,13 +16,18 @@ def index():
     return render_template('home.html', title = 'title', pickuplines=pickuplines, interviewpitch=interviewpitch, promotionpitch=promotionpitch, productpitch=productpitch)
 
 
-@app.route('/')
-def index():
-
-    '''
-    View root page function that returns the index page and its data
-    '''
-
-    message = 'Hello World'
-    return render_template('index.html',message = message)
+@main.route('/pitches/new/', methods = ['GET','POST'])
+@login_required
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        description = form.description.data
+        title = form.title.data
+        owner_id = current_user
+        category = form.category.data
+        print(current_user._get_current_object().id)
+        new_pitch = Pitch(owner_id = current_user.get_current_object().id, title = title, description=description, category=category)
+        db.session.add(new_pitch)
+        db.session.commit() 
+         
     
