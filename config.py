@@ -20,19 +20,28 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-
-
+SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://peter:ozil@localhost/laca'
 class TestConfig(Config):
     '''
     Test configuration child class
     Args:
         Comfig: The parent configuration class with General configuration settings
     '''
-    SECRET_KET = 'one'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://peter:ozil@localhost/laca'
+    
+class DevConfig(Config):
+    '''
+    Development configuration child class
+    Args:
+         Comfig: The parent configuration class with General configuration settings
+    '''
+    SECRET_KEY = 'talk'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://peter:ozil@localhost/laca'
     DEBUG = True
     ENV = 'development'
+         
+        
+   
     
 config_options = {
     'development':DevConfig,
