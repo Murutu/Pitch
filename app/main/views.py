@@ -39,6 +39,15 @@ def product(category):
     product=Product.get_product(product)
     return render_template('product.html',product=product)
 
+@main.route('/promotion/<category>')
+def promotion(category):
+    '''
+    view root page function that returns index and its data 
+    '''
+    promotion=Promotion.get_promotion(promotion)
+    return render_template('promotion.html',promotion=promotion)
+
+
 
 
 
