@@ -31,6 +31,14 @@ def interview(category):
     interview=Interview.get_interviews(category)
     return render_template('interview.html',interview=interview)
 
+@main.route('/product/<category>')
+def product(category):
+    '''
+    view root page function that returns index and its data 
+    '''
+    product=Product.get_product(product)
+    return render_template('product.html',product=product)
+
 
 
 
