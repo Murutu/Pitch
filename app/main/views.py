@@ -19,6 +19,20 @@ def index():
     promotion_pitches = Pitch.get_pitches('promotion')
     return render_template('home.html', title=title,pickuplines=pickuplines_pitches,interview=interview_pitches,product=product_pitches,promotion=product_pitches)
 
+@main.route('/pitch/new', methods = ['GET','POST'])
+@login_required
+def create_pitch():
+    pitch_form = PitchForm()
+    if pitch_form.validate_on_submit():
+        title = pitch_form.title.data
+        pitch = pitch_form.text.data
+        category = pitch_form.category.data
+        
+        create_pitch = Pitch(pitch_title=title,pitch_content=pitch,category=category,user=current_user)
+        
+        create_pitch.save_pitch()
+        return redirect(url_for('.index'))
+
 @main.route('/pickuplines/<category>')
 def pickuplines(category):
     '''
