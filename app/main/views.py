@@ -39,7 +39,7 @@ def pickuplines(category):
     view root page function that returns index and its data 
     '''
     pickuplines=Pickuplines.get_interviews(category)
-    return render_template('pickuplines.html',pickuplines=pickuplines)
+    return render_template('pickuplines.html',pitches=pitches)
 
 @main.route('/interview/<category>')
 def interview(category):
@@ -47,7 +47,7 @@ def interview(category):
     view root page function that returns index and its data 
     '''
     interview=Interview.get_interviews(category)
-    return render_template('interview.html',interview=interview)
+    return render_template('interview.html',pitches=pitches)
 
 @main.route('/product/<category>')
 def product(category):
@@ -55,7 +55,7 @@ def product(category):
     view root page function that returns index and its data 
     '''
     product=Product.get_product(product)
-    return render_template('product.html',product=product)
+    return render_template('product.html',pitches=pitches)
 
 @main.route('/promotion/<category>')
 def promotion(category):
@@ -63,7 +63,7 @@ def promotion(category):
     view root page function that returns index and its data 
     '''
     promotion=Promotion.get_promotion(promotion)
-    return render_template('promotion.html',promotion=promotion)
+    return render_template('promotion.html',pitches=pitches)
 
 
 
