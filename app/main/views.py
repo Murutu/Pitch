@@ -16,7 +16,7 @@ def index():
     return render_template('home.html')
 
 @main.route('/interview/<category>')
-def blog(category):
+def interview(category):
     '''
     view root page function that returns index and its data 
     '''
