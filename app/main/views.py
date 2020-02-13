@@ -17,7 +17,7 @@ def index():
     interview_pitches = Pitch.get_pitches('interview')
     product_pitches = Pitch.get_pitches('product')
     promotion_pitches = Pitch.get_pitches('promotion')
-    return render_template('home.html')
+    return render_template('home.html', title=title,pickuplines=pickuplines_pitches,interview=interview_pitches,product=product_pitches,promotion=product_pitches)
 
 @main.route('/pickuplines/<category>')
 def pickuplines(category):
