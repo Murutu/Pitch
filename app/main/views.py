@@ -12,7 +12,11 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Home'
+    title = 'Pitch'
+    pickuplines_pitches = Pitch.get_pitches('pickuplines')
+    interview_pitches = Pitch.get_pitches('interview')
+    product_pitches = Pitch.get_pitches('product')
+    promotion_pitches = Pitch.get_pitches('promotion')
     return render_template('home.html')
 
 @main.route('/pickuplines/<category>')
