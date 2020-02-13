@@ -56,6 +56,8 @@ def promotion(category):
 
 
 
+
+
 # @main.route('/pitches/new/', methods = ['GET','POST'])
 # @login_required
 # def new_pitch():
