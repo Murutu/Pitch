@@ -15,6 +15,14 @@ def index():
     title = 'Home'
     return render_template('home.html')
 
+@main.route('/pickuplines/<category>')
+def pickuplines(category):
+    '''
+    view root page function that returns index and its data 
+    '''
+    pickuplines=Pickuplines.get_interviews(category)
+    return render_template('pickuplines.html',pickuplines=pickuplines)
+
 @main.route('/interview/<category>')
 def interview(category):
     '''
@@ -22,6 +30,9 @@ def interview(category):
     '''
     interview=Interview.get_interviews(category)
     return render_template('interview.html',interview=interview)
+
+
+
 
 
 
