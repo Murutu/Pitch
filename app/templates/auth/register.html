@@ -1,18 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
 
 {% block content %}
-{{super()}}
 <div class="container">
-    <h3>Register</h3>
-    {% for error in errors %}
-    <p style="color:blue;">{{error}}</p>
-    {% endfor %}
-    <form action="/register" method="POST">
-        <div class="form-group">
-            <label for="exapleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<div class="row" style="margin-top: 50px;">
+<div class="col-md-2"> </div>
+<div class="col-md-8">
+
+{{wtf.quick_form(registration_form)}}
+
 </div>
-{% endblock %}
+<div class="col-md-2"></div>
+</div>
+</div>
+
+{% endblock%}
