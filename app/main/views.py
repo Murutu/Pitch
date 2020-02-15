@@ -2,9 +2,9 @@ from flask import render_template
 from .import main
 from flask_login import login_required, current_user
 from ..models import Pitch,User
-from .forms import PitchForms
+from .forms import PitchForm
 
-Pitch = pitch.Pitch
+# Pitch = pitch.Pitch
  
 
 
@@ -23,18 +23,20 @@ def index():
     return render_template('home.html', title=title,pickuplines=pickuplines_pitches,interview=interview_pitches,product=product_pitches,promotion=product_pitches)
 
 @main.route('/pitch/new', methods = ['GET','POST'])
-@login_required
+# @login_required
 def create_pitch():
     pitch_form = PitchForm()
     if pitch_form.validate_on_submit():
         title = pitch_form.title.data
-        pitch = pitch_form.text.data
-        category = pitch_form.category.data
+        pitch = pitch_form.description.data
+        # category = pitch_form.category.data
         
-        create_pitch = Pitch(pitch_title=title,pitch_content=pitch,category=category,user=current_user)
+        create_pitch = Pitch(title,pitch)
         
         create_pitch.save_pitch()
-        return redirect(url_for('.index'))
+        return redirect(url_for('index'))
+    return render_template('create_pitch.html',pitch_form=pitch_form)
+    
 
 @main.route('/pickuplines/<category>')
 def pickuplines(category):

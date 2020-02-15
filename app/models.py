@@ -29,8 +29,8 @@ class Pitch(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     description = db.Column(db.String(), index = True)
     title = db.Column(db.String())
-    
-    # comment = db.relationship('Comment', backref = 'comment', lazy = 'dynamic')
+    # category =db.Column(db.ForeignKey('categories.id'))   
+    comment = db.Column(db.Integer,db.ForeignKey('comments.id'))
     
     
     @classmethod
@@ -45,4 +45,16 @@ class Pitch(db.Model):
     
     def __repr__(self):
         return f'Pitch {self.description}'
+    
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String())
+    pitch = db.relationship('Pitch',backref = 'role',lazy="dynamic")
+    
+
+        
+    
+    
+    
     
