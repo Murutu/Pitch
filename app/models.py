@@ -30,7 +30,7 @@ class Pitch(db.Model):
     description = db.Column(db.String(), index = True)
     title = db.Column(db.String())
     # category =db.Column(db.ForeignKey('categories.id'))   
-    comment = db.Column(db.Integer,db.ForeignKey('comments.id'))
+    # comment = db.Column(db.Integer,db.ForeignKey('comments.id'))
     
     
     @classmethod

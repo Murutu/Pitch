@@ -31,10 +31,10 @@ def create_pitch():
         pitch = pitch_form.description.data
         # category = pitch_form.category.data
         
-        create_pitch = Pitch(title,pitch)
+        create_pitch = Pitch(pitch_title=title, pitch_content=pitch)
         
         create_pitch.save_pitch()
-        return redirect(url_for('index'))
+        return redirect(url_for('.index'))
     return render_template('create_pitch.html',pitch_form=pitch_form)
     
 
