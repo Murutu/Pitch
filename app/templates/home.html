@@ -14,62 +14,23 @@
         <h1 style="font-family: 'Lemonada', cursive;" >Pitch</h1>
     
         <nav class="nav" style="margin-left: 30%; font-size: 28px; font-family: 'Odibee Sans', cursive;">
-            <a class="nav-link active" href="#">Pickuplines</a>
-            <a class="nav-link" href="#">Interview</a>
-            <a class="nav-link" href="#">Product</a>
+            <a class="nav-link active" href="pickuplines">Pickuplines</a>
+            <a class="nav-link" href="/interview">Interview</a>
+            <a class="nav-link" href="/product">Product</a>
             <a class="nav-link" href="/promotion">Promotion</a>
             <a class="nav-link" href="/pitch/new"> Type your own pitch</a>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li style="color:rgb(104, 233, 13);padding:15px;">{{current_user.username}}</li>
+                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                {% else %}
+                <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                {%endif%}
+              </ul>
           </nav>
 
-          {% for i in promotion_pitches %}
-          <div class="card">
-            <div class="card-header">
-            <p>{{i.title}}</p>
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>{{i.description}}</p>
-              </blockquote>
-            </div>
-          </div>
-
-          {% for i in interview_pitches %}
-          <div class="card">
-            <div class="card-header">
-            <p>{{i.title}}</p>
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>{{i.description}}</p>
-              </blockquote>
-            </div>
-          </div>
-
-          {% for i in pickuplines_pitches %}
-          <div class="card">
-            <div class="card-header">
-            <p>{{i.title}}</p>
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>{{i.description}}</p>
-              </blockquote>
-            </div>
-          </div>
-
-          {% for i in product_pitches %}
-          <div class="card">
-            <div class="card-header">
-            <p>{{i.title}}</p>
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>{{i.description}}</p>
-              </blockquote>
-            </div>
-          </div>
-            
-          {% endfor %}
+         
           {% endblock %}
 
           

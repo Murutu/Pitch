@@ -1,7 +1,7 @@
 from flask import render_template,redirect, url_for
 from .import main
 from flask_login import login_required, current_user
-from ..models import Pitch,User
+from ..models import Pitch,User 
 from .forms import PitchForm
 
 # Pitch = pitch.Pitch
@@ -38,36 +38,36 @@ def create_pitch():
     return render_template('create_pitch.html',pitch_form=pitch_form)
     
 
-@main.route('/pickuplines/<category>')
-def pickuplines(category):
+@main.route('/pickuplines')
+def pickuplines():
     '''
     view root page function that returns index and its data 
     '''
-    pickuplines=Pickuplines.get_interviews(category)
-    return render_template('pickuplines.html',pitches=pitches)
+    pitches=Pitch.query.filter_by(title='pickuplines').all()
+    return render_template('promotion.html',pitches=pitches)
 
-@main.route('/interview/<category>')
-def interview(category):
+@main.route('/interview')
+def interview():
     '''
     view root page function that returns index and its data 
     '''
-    interview=Interview.get_interviews(category)
-    return render_template('interview.html',pitches=pitches)
+    pitches=Pitch.query.filter_by(title='interview').all()
+    return render_template('promotion.html',pitches=pitches)
 
-@main.route('/product/<category>')
-def product(category):
+@main.route('/product')
+def product():
     '''
     view root page function that returns index and its data 
     '''
-    product=Product.get_product(product)
-    return render_template('product.html',pitches=pitches)
+    pitches=Pitch.query.filter_by(title='product').all()
+    return render_template('promotion.html',pitches=pitches)
 
-@main.route('/promotion/<category>')
-def promotion(category):
+@main.route('/promotion')
+def promotion():
     '''
     view root page function that returns index and its data 
     '''
-    promotion=Promotion.get_promotion(promotion)
+    pitches=Pitch.query.filter_by(title='promotion').all()
     return render_template('promotion.html',pitches=pitches)
 
 
