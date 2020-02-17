@@ -5,6 +5,7 @@ A web application that lets users submit pitches based on different categories.
 Peter Murutu
 
 ### Link to Live Site
+https://laca-pitch.herokuapp.com/
 
 
 ### Description
