@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template,redirect, url_for
 from .import main
 from flask_login import login_required, current_user
 from ..models import Pitch,User
@@ -20,7 +20,7 @@ def index():
     interview_pitches = Pitch.get_pitches('interview')
     product_pitches = Pitch.get_pitches('product')
     promotion_pitches = Pitch.get_pitches('promotion')
-    return render_template('home.html', title=title,pickuplines=pickuplines_pitches,interview=interview_pitches,product=product_pitches,promotion=product_pitches)
+    return render_template('home.html', title=title,pickuplines=pickuplines_pitches,interview=interview_pitches,product=product_pitches,promotion_pitches=promotion_pitches)
 
 @main.route('/pitch/new', methods = ['GET','POST'])
 # @login_required
@@ -31,7 +31,7 @@ def create_pitch():
         pitch = pitch_form.description.data
         # category = pitch_form.category.data
         
-        create_pitch = Pitch(pitch_title=title, pitch_content=pitch)
+        create_pitch = Pitch(title=title, description=pitch)
         
         create_pitch.save_pitch()
         return redirect(url_for('.index'))

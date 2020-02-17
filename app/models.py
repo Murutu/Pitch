@@ -38,6 +38,10 @@ class Pitch(db.Model):
         pitches=Pitch.query.filter_by(title=category).all()
         return pitches
     
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()        
+    
     # @classmethod
     # def get_pitches(cls, id):
     #     pitches = Pitch.query.filter_by(id=id).first()
@@ -46,11 +50,11 @@ class Pitch(db.Model):
     def __repr__(self):
         return f'Pitch {self.description}'
     
-class Comment(db.Model):
-    __tablename__ = 'comments'
-    id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String())
-    pitch = db.relationship('Pitch',backref = 'role',lazy="dynamic")
+# class Comment(db.Model):
+#     __tablename__ = 'comments'
+#     id = db.Column(db.Integer, primary_key=True)
+#     body = db.Column(db.String())
+#     pitch = db.relationship('Pitch',backref = 'role',lazy="dynamic")
     
 
         

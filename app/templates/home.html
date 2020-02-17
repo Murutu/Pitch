@@ -17,9 +17,61 @@
             <a class="nav-link active" href="#">Pickuplines</a>
             <a class="nav-link" href="#">Interview</a>
             <a class="nav-link" href="#">Product</a>
-            <a class="nav-link" href="#">Promotion</a>
+            <a class="nav-link" href="/promotion">Promotion</a>
             <a class="nav-link" href="/pitch/new"> Type your own pitch</a>
           </nav>
+
+          {% for i in promotion_pitches %}
+          <div class="card">
+            <div class="card-header">
+            <p>{{i.title}}</p>
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{i.description}}</p>
+              </blockquote>
+            </div>
+          </div>
+
+          {% for i in interview_pitches %}
+          <div class="card">
+            <div class="card-header">
+            <p>{{i.title}}</p>
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{i.description}}</p>
+              </blockquote>
+            </div>
+          </div>
+
+          {% for i in pickuplines_pitches %}
+          <div class="card">
+            <div class="card-header">
+            <p>{{i.title}}</p>
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{i.description}}</p>
+              </blockquote>
+            </div>
+          </div>
+
+          {% for i in product_pitches %}
+          <div class="card">
+            <div class="card-header">
+            <p>{{i.title}}</p>
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{i.description}}</p>
+              </blockquote>
+            </div>
+          </div>
+            
+          {% endfor %}
           {% endblock %}
+
+          
     </body>
 </html>    
